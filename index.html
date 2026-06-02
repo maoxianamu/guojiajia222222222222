@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>过伽伽｜房产风险处置与资产协同服务</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: #162033;
+      background: #f6f8fb;
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, .92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid #e8edf5;
+    }
+
+    .nav-inner {
+      max-width: 1180px;
+      margin: auto;
+      padding: 16px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: 1px;
+      color: #163b6d;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-size: 15px;
+      color: #4e5d73;
+    }
+
+    .nav-cta {
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: #163b6d;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .hero {
+      background: radial-gradient(circle at 85% 20%, #d7e8ff 0, transparent 34%), linear-gradient(135deg, #eef5ff 0%, #ffffff 50%, #f4f7fb 100%);
+    }
+
+    .hero-inner {
+      max-width: 1180px;
+      margin: auto;
+      padding: 86px 22px 70px;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 54px;
+      align-items: center;
+    }
+
+    .tag {
+      display: inline-flex;
+      padding: 7px 14px;
+      border: 1px solid #cfe0f7;
+      border-radius: 999px;
+      background: #fff;
+      color: #315c91;
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: 48px;
+      line-height: 1.18;
+      color: #10213a;
+      margin-bottom: 22px;
+      letter-spacing: -1px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #52627a;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      padding: 14px 24px;
+      border-radius: 12px;
+      font-weight: 700;
+    }
+
+    .btn-primary {
+      background: #163b6d;
+      color: #fff;
+      box-shadow: 0 12px 28px rgba(22, 59, 109, .22);
+    }
+
+    .btn-secondary {
+      background: #fff;
+      border: 1px solid #dbe4ef;
+      color: #163b6d;
+    }
+
+    .hero-card {
+      background: #fff;
+      border: 1px solid #e7edf6;
+      border-radius: 26px;
+      padding: 30px;
+      box-shadow: 0 24px 70px rgba(31, 53, 86, .12);
+    }
+
+    .risk-title {
+      font-weight: 800;
+      font-size: 22px;
+      margin-bottom: 18px;
+      color: #163b6d;
+    }
+
+    .risk-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .risk-item {
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: #f6f9fd;
+      border: 1px solid #edf2f8;
+      color: #43536b;
+    }
+
+    .stats {
+      max-width: 1180px;
+      margin: -34px auto 0;
+      padding: 0 22px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .stat {
+      background: #fff;
+      border-radius: 18px;
+      padding: 22px;
+      border: 1px solid #e8edf5;
+      box-shadow: 0 12px 36px rgba(31, 53, 86, .07);
+    }
+
+    .stat b {
+      display: block;
+      font-size: 27px;
+      color: #163b6d;
+    }
+
+    .stat span {
+      color: #6a778a;
+      font-size: 14px;
+    }
+
+    section {
+      max-width: 1180px;
+      margin: auto;
+      padding: 78px 22px 0;
+    }
+
+    .section-head {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 42px;
+    }
+
+    .section-head h2 {
+      font-size: 34px;
+      color: #10213a;
+      margin-bottom: 12px;
+    }
+
+    .section-head p {
+      color: #65758b;
+      font-size: 17px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #e8edf5;
+      border-radius: 22px;
+      padding: 26px;
+      box-shadow: 0 12px 34px rgba(31, 53, 86, .06);
+    }
+
+    .icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: #edf5ff;
+      color: #163b6d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+
+    .card h3 {
+      font-size: 21px;
+      margin-bottom: 10px;
+      color: #10213a;
+    }
+
+    .card p,
+    .card li {
+      color: #5f6f84;
+      font-size: 15.5px;
+    }
+
+    .card ul {
+      padding-left: 18px;
+      margin-top: 12px;
+    }
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+
+    .step {
+      background: #fff;
+      border: 1px solid #e8edf5;
+      border-radius: 20px;
+      padding: 22px;
+      position: relative;
+    }
+
+    .step-num {
+      font-size: 13px;
+      color: #8a98aa;
+      margin-bottom: 8px;
+    }
+
+    .step h3 {
+      font-size: 18px;
+      color: #163b6d;
+      margin-bottom: 8px;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .dark-panel {
+      background: linear-gradient(135deg, #10213a, #173f73);
+      color: #fff;
+      border-radius: 26px;
+      padding: 34px;
+    }
+
+    .dark-panel h2 {
+      font-size: 32px;
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+
+    .dark-panel p {
+      color: #dbe8f7;
+    }
+
+    .case-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .case {
+      background: #fff;
+      border: 1px solid #e8edf5;
+      border-radius: 20px;
+      padding: 22px;
+    }
+
+    .case b {
+      color: #163b6d;
+    }
+
+    .notice {
+      background: #fff7ea;
+      border: 1px solid #ffe0a3;
+      border-radius: 20px;
+      padding: 24px;
+      color: #6d4f17;
+      margin-top: 20px;
+    }
+
+    .form-wrap {
+      background: linear-gradient(135deg, #ffffff, #eef5ff);
+      border: 1px solid #e3ebf6;
+      border-radius: 28px;
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .form {
+      display: grid;
+      gap: 12px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 14px 15px;
+      border-radius: 12px;
+      border: 1px solid #d8e1ec;
+      background: #fff;
+      font-size: 15px;
+      font-family: inherit;
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    footer {
+      margin-top: 78px;
+      padding: 36px 22px;
+      background: #10213a;
+      color: #cbd8e8;
+    }
+
+    .footer-inner {
+      max-width: 1180px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .small {
+      font-size: 13px;
+      color: #8ea0b7;
+    }
+
+    @media(max-width: 900px) {
+
+      .hero-inner,
+      .split,
+      .form-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-3,
+      .stats,
+      .process {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      h1 {
+        font-size: 36px;
+      }
+
+      section {
+        padding-top: 56px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="logo">过伽伽房产风险服务</div>
+      <div class="nav-links">
+        <a href="#service">服务内容</a><a href="#process">服务流程</a><a href="#case">案例方向</a><a href="#contact">免费诊断</a>
+      </div>
+      <a class="nav-cta" href="#contact">预约评估</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="tag">房贷逾期｜经营贷到期｜被诉执行｜房产法拍风险</div>
+        <h1>在房产进入被动处置前，先把主动权争取回来</h1>
+        <p>我们专注房产风险处置与不良资产个案服务，围绕司法阶段、资产状态、家庭决策和房屋现实情况，为客户做节点判断、方案设计、律师协同与落地推进。</p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="#contact">提交情况，获取初步方案</a>
+          <a class="btn-secondary" href="#process">了解处理流程</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="risk-title">您可能正处在这些节点</div>
+        <div class="risk-list">
+          <div class="risk-item">经营贷到期，本金无法一次性归还</div>
+          <div class="risk-item">房贷或抵押贷逾期，银行开始催收</div>
+          <div class="risk-item">收到律师函、传票、执行通知或评估询价</div>
+          <div class="risk-item">房屋存在查封、一拍、二拍、流拍风险</div>
+          <div class="risk-item">想争取协商、回拍、补贴或更稳妥处置窗口</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="stats">
+    <div class="stat"><b>J0-J9</b><span>按司法阶段判断风险窗口</span></div>
+    <div class="stat"><b>双岗协同</b><span>销售推进 + 专业支持</span></div>
+    <div class="stat"><b>0前期</b><span>部分方案可用租赁收益覆盖成本</span></div>
+    <div class="stat"><b>全流程</b><span>诊断、方案、签约、落地协同</span></div>
+  </div>
+
+  <section id="service">
+    <div class="section-head">
+      <h2>我们能帮您做什么</h2>
+      <p>不是简单咨询，也不是单点中介服务，而是结合司法节点、房屋价值和现实可行性，制定可执行的房产风险处置路径。</p>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="icon">01</div>
+        <h3>房产风险诊断</h3>
+        <p>根据逾期、起诉、执行、评估、拍卖等阶段，判断当前可操作窗口和重点风险。</p>
+        <ul>
+          <li>贷款与债务结构梳理</li>
+          <li>查封与执行节点判断</li>
+          <li>房产价值与租金测算</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="icon">02</div>
+        <h3>司法节点协同</h3>
+        <p>由法务及律师团队结合个案材料，围绕程序节点、异议、协商、补贴等方向提供专业支持。</p>
+        <ul>
+          <li>材料审查与策略建议</li>
+          <li>执行程序节点跟进</li>
+          <li>协商与文书方向支持</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="icon">03</div>
+        <h3>租赁权置换方案</h3>
+        <p>通过真实、合法、可核验的租赁/托管关系，以房屋租赁收益覆盖律师及项目推进费用。</p>
+        <ul>
+          <li>租赁合同与交付证据链</li>
+          <li>托管运营与收益安排</li>
+          <li>整体周期约24个月设计</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="icon">04</div>
+        <h3>回拍与资产处置</h3>
+        <p>适合资不抵债、现金流断裂、仍希望争取更低成本处置或重新取得房产控制权的客户。</p>
+        <ul>
+          <li>评估价、一拍价、二拍价测算</li>
+          <li>回拍资金与风险测算</li>
+          <li>处置路径对比</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="icon">05</div>
+        <h3>唯一住房补贴协助</h3>
+        <p>针对符合条件的客户，协助梳理居住、家庭、房产等材料，争取依法合规申请相关补贴。</p>
+        <ul>
+          <li>家庭居住情况梳理</li>
+          <li>证明材料清单</li>
+          <li>比例与金额测算</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="icon">06</div>
+        <h3>租赁运营落地</h3>
+        <p>对具备出租条件的房屋，协同评估、交付、出租、托管和后续运营，减少空置与被动损失。</p>
+        <ul>
+          <li>租金核定</li>
+          <li>收房交付</li>
+          <li>挂牌出租及运营管理</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="section-head">
+      <h2>5步完成初步判断</h2>
+      <p>客户只需要先把关键信息说清楚，我们会先判断方向，再决定是否具备推进价值。</p>
+    </div>
+    <div class="process">
+      <div class="step">
+        <div class="step-num">STEP 01</div>
+        <h3>基础沟通</h3>
+        <p>了解贷款、逾期、诉讼、房产价值、租金、家庭情况。</p>
+      </div>
+      <div class="step">
+        <div class="step-num">STEP 02</div>
+        <h3>阶段判断</h3>
+        <p>按J0-J9识别当前处于预警、诉中、执行或拍卖阶段。</p>
+      </div>
+      <div class="step">
+        <div class="step-num">STEP 03</div>
+        <h3>材料核验</h3>
+        <p>核对合同、判决、执行通知、查封、评估等关键材料。</p>
+      </div>
+      <div class="step">
+        <div class="step-num">STEP 04</div>
+        <h3>方案测算</h3>
+        <p>测算时间窗口、租赁收益、回拍成本、补贴空间。</p>
+      </div>
+      <div class="step">
+        <div class="step-num">STEP 05</div>
+        <h3>签约落地</h3>
+        <p>条款书面确认，依法合规推进，不做口头承诺。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="case">
+    <div class="split">
+      <div class="dark-panel">
+        <h2>适合咨询我们的客户</h2>
+        <p>如果您的房子还有价值空间，但债务、司法或现金流已经开始压缩处置时间，就需要尽早做阶段判断。越早介入，越有机会把方案做得更从容。</p>
+        <div class="notice">重要提示：所有方案均需结合合同、材料、司法节点和房屋实际情况判断。我们不承诺固定结果，不承诺一定保房，不以虚假租赁或对抗执行作为服务方式。</div>
+      </div>
+      <div class="case-list">
+        <div class="case"><b>经营贷到期无法归本：</b>重点判断是否能协商、是否存在赋强公证、是否需要提前设计租赁/托管与资金窗口。</div>
+        <div class="case"><b>已起诉但未执行：</b>重点关注判决生效、调解、上诉、执行启动前的材料和时间窗口。</div>
+        <div class="case"><b>已执行或已查封：</b>重点核实查封状态、评估询价、一拍时间、租赁关系是否真实有效。</div>
+        <div class="case"><b>资不抵债想回拍：</b>重点测算评估价、起拍价、保证金、资金安排、后续居住或运营方案。</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="form-wrap">
+      <div>
+        <h2 style="font-size:32px;color:#10213a;margin-bottom:12px;">提交房产情况，获取初步风险诊断</h2>
+        <p style="color:#65758b;margin-bottom:18px;">建议您先准备：贷款合同、催收/律师函、传票、判决书、执行通知、房产证或不动产信息、查封/评估/拍卖材料。</p>
+        <div class="notice">我们会先判断是否具备操作空间，再给出可执行方向。早一步梳理，少一步被动。</div>
+      </div>
+      <form class="form">
+        <input placeholder="您的称呼" />
+        <input placeholder="联系电话" />
+        <select>
+          <option>当前阶段：请选择</option>
+          <option>未逾期</option>
+          <option>已逾期未起诉</option>
+          <option>已起诉未执行</option>
+          <option>已执行/查封</option>
+          <option>已进入法拍</option>
+        </select>
+        <input placeholder="房产位置 / 预估价值 / 月租金" />
+        <textarea placeholder="简单描述：贷款银行、欠款金额、是否有二抵、是否赋强公证、当前诉求"></textarea>
+        <!-- <button type="button" class="btn-primary" style="border:none;cursor:pointer;">提交预约123123</button> -->
+        <a href="https://qcnfh5vogrpd.feishu.cn/share/base/form/shrcnAuV8RPsj5LwPk9AaPppn6e" target="_blank" class="btn-primary" style="text-align: center;">
+          立即获取风险诊断方案
+        </a>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div><b>过伽伽房产风险服务</b>
+        <div class="small">房产风险处置｜司法节点协同｜租赁权置换｜资产托管运营</div>
+      </div>
+      <div class="small">免责声明：本页面内容仅为服务介绍，不构成结果承诺或法律意见。具体方案以材料审核、合同约定及律师个案判断为准。</div>
+    </div>
+  </footer>
+</body>
+
+</html>
